@@ -1,0 +1,91 @@
+<h2>Incidentes</h2>
+
+<button (click)="createNew()">Nuevo incidente</button>
+
+<form [formGroup]="form" (ngSubmit)="load()" style="margin-top:12px; display:grid; gap:8px; max-width:900px;">
+  <div>
+    <label>Texto libre</label><br />
+    <input formControlName="q" placeholder="título/desc/responsable..." />
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <div>
+      <label>Estado</label><br />
+      <select formControlName="status">
+        <option value="">(todos)</option>
+        <option value="ABIERTO">ABIERTO</option>
+        <option value="EN_ANALISIS">EN_ANALISIS</option>
+        <option value="CERRADO">CERRADO</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Nivel</label><br />
+      <select formControlName="level">
+        <option value="">(todos)</option>
+        <option value="BAJO">BAJO</option>
+        <option value="MEDIO">MEDIO</option>
+        <option value="ALTO">ALTO</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Área</label><br />
+      <input formControlName="area" placeholder="Operaciones..." />
+    </div>
+
+    <div>
+      <label>Responsable</label><br />
+      <input formControlName="responsible" placeholder="Juan..." />
+    </div>
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <div>
+      <label>Desde</label><br />
+      <input type="date" formControlName="fromDate" />
+    </div>
+    <div>
+      <label>Hasta</label><br />
+      <input type="date" formControlName="toDate" />
+    </div>
+    <div>
+      <label>Orden</label><br />
+      <select formControlName="sort">
+        <option value="incidentDate,desc">Fecha desc</option>
+        <option value="incidentDate,asc">Fecha asc</option>
+        <option value="level,desc">Nivel desc</option>
+        <option value="level,asc">Nivel asc</option>
+      </select>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loading">{{ loading ? 'Cargando...' : 'Buscar' }}</button>
+</form>
+
+<div *ngIf="error" style="color:#b00020; margin-top:12px;">{{ error }}</div>
+
+<table border="1" cellpadding="6" cellspacing="0" style="margin-top:12px; width:100%;">
+  <thead>
+    <tr>
+      <th>ID</th><th>Fecha</th><th>Título</th><th>Área</th><th>Nivel</th><th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let it of data" (click)="goDetail(it.id)" style="cursor:pointer;">
+      <td>{{ it.id }}</td>
+      <td>{{ it.incidentDate }}</td>
+      <td>{{ it.title }}</td>
+      <td>{{ it.area }}</td>
+      <td>{{ it.level }}</td>
+      <td>{{ it.status }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<app-pagination
+  [page]="page"
+  [size]="size"
+  [total]="total"
+  (pageChange)="onPageChange($event)">
+</app-pagination>

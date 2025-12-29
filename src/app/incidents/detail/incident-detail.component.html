@@ -1,0 +1,48 @@
+<div *ngIf="error" style="color:#b00020;">{{ error }}</div>
+<div *ngIf="loading">Cargando...</div>
+
+<div *ngIf="incident as i">
+  <div><b>ID:</b> {{ i.id }}</div>
+  <div><b>Fecha:</b> {{ i.incidentDate }}</div>
+  <div><b>Título:</b> {{ i.title }}</div>
+  <div><b>Área:</b> {{ i.area }}</div>
+  <div><b>Nivel:</b> {{ i.level }}</div>
+  <div><b>Estado:</b> {{ i.status }}</div>
+  <div><b>Responsable:</b> {{ i.responsible }}</div>
+  <div><b>Versión:</b> {{ i.version }}</div>
+
+  <p><b>Descripción</b><br />{{ i.description }}</p>
+
+  <button (click)="edit()">Editar</button>
+
+  <button *ngIf="isSupervisor && i.status !== 'CERRADO'" (click)="close()">Cerrar</button>
+  <button *ngIf="isSupervisor && i.status === 'CERRADO'" (click)="reopen()">Reabrir</button>
+
+  <hr />
+
+  <h3>Adjuntos</h3>
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <ul>
+    <li *ngFor="let a of attachments">
+      {{ a.fileName }} <span *ngIf="a.sizeBytes">({{ a.sizeBytes }} bytes)</span>
+      <button (click)="download(a)">Descargar</button>
+    </li>
+  </ul>
+
+  <hr />
+
+  <h3>Historial</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <tr>
+      <th>Fecha</th><th>Usuario</th><th>Campo</th><th>Antes</th><th>Después</th>
+    </tr>
+    <tr *ngFor="let h of history">
+      <td>{{ h.changedAt }}</td>
+      <td>{{ h.changedBy }}</td>
+      <td>{{ h.fieldName }}</td>
+      <td>{{ h.oldValue }}</td>
+      <td>{{ h.newValue }}</td>
+    </tr>
+  </table>
+</div>

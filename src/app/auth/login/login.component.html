@@ -1,0 +1,21 @@
+<h2>Ingreso SIGESS</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" style="max-width:360px;">
+  <div style="margin-bottom:8px;">
+    <label>Usuario</label><br />
+    <input formControlName="username" />
+  </div>
+
+  <div style="margin-bottom:8px;">
+    <label>Contraseña</label><br />
+    <input type="password" formControlName="password" />
+  </div>
+
+  <button type="submit" [disabled]="loading">
+    {{ loading ? 'Ingresando...' : 'Ingresar' }}
+  </button>
+
+  <div *ngIf="error" style="color:#b00020; margin-top:12px;">
+    {{ error }}
+  </div>
+</form>

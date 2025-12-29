@@ -1,0 +1,77 @@
+/* src/app/incidents/detail/incident-detail.component.scss */
+.incident-detail {
+  max-width: 920px;
+
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    .spacer {
+      margin-left: auto;
+    }
+  }
+
+  .meta {
+    margin-top: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+
+    @media (max-width: 840px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 520px) {
+      grid-template-columns: 1fr;
+    }
+
+    .item {
+      font-size: 14px;
+      color: var(--text);
+
+      b {
+        color: var(--muted);
+      }
+    }
+  }
+
+  .section {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+
+  .files {
+    display: grid;
+    gap: 8px;
+
+    .file {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fafafa;
+    }
+  }
+}

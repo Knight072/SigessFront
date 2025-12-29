@@ -1,0 +1,17 @@
+<!-- src/app/app.component.html -->
+<div class="topbar">
+  <div class="topbar__links">
+    <a routerLink="/incidents">Incidentes</a>
+    <a routerLink="/reports/top-areas">Top Áreas</a>
+    <a routerLink="/reports/critical-by-week">Críticos por Semana</a>
+  </div>
+
+  <div class="topbar__right" *ngIf="auth.currentUser() as u">
+    <span>{{ u.fullName }} ({{ u.role }})</span>
+    <button class="btn btn--ghost" (click)="logout()">Salir</button>
+  </div>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

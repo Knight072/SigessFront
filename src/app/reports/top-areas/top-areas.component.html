@@ -1,0 +1,8 @@
+<h2>Top 3 áreas (último trimestre)</h2>
+<div *ngIf="error" style="color:#b00020;">{{ error }}</div>
+
+<ul *ngIf="res">
+  <li *ngFor="let i of res.items">
+    {{ i.area }}: {{ i.total }}
+  </li>
+</ul>

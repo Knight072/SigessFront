@@ -1,0 +1,53 @@
+.login {
+  max-width: 460px;
+  margin: 56px auto;
+  padding: 0 var(--gap-3);
+
+  .login__title {
+    margin: 0 0 14px;
+    font-size: 30px;
+    font-weight: 950;
+    letter-spacing: -0.6px;
+  }
+
+  .login__subtitle {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .login__card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  form {
+    display: grid;
+    gap: 14px;
+  }
+
+  .row {
+    display: grid;
+    gap: 8px;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .hint {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+
+  .btn {
+    @media (max-width: 520px) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}

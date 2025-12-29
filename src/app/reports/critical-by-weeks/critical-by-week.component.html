@@ -1,0 +1,12 @@
+<h2>Críticos por semana (últimas 8 semanas)</h2>
+<div *ngIf="error" style="color:#b00020;">{{ error }}</div>
+
+<table *ngIf="res" border="1" cellpadding="6" cellspacing="0">
+  <thead><tr><th>Semana</th><th>Total ALTO</th></tr></thead>
+  <tbody>
+    <tr *ngFor="let i of res.items">
+      <td>{{ i.yearWeek }}</td>
+      <td>{{ i.total }}</td>
+    </tr>
+  </tbody>
+</table>

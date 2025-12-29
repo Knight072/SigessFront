@@ -1,0 +1,61 @@
+/* src/app/incidents/list/incidents-list.component.scss */
+.incidents {
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .spacer {
+      margin-left: auto;
+    }
+  }
+
+  .filters {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      align-items: end;
+
+      @media (max-width: 900px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (max-width: 520px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      grid-column: 1 / -1;
+      justify-content: flex-end;
+    }
+  }
+
+  .table-wrap {
+    margin-top: 14px;
+  }
+
+  .clickable-row {
+    cursor: pointer;
+  }
+
+  .footer {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+  }
+}

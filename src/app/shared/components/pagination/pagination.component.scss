@@ -1,0 +1,11 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .label {
+    color: var(--muted);
+    font-weight: 800;
+    font-size: 13px;
+  }
+}

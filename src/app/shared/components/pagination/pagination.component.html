@@ -1,0 +1,5 @@
+<div style="display:flex; gap:12px; align-items:center; margin-top:12px;">
+  <button (click)="prev()" [disabled]="page === 0">Anterior</button>
+  <div>Página {{ page + 1 }} / {{ totalPages }}</div>
+  <button (click)="next()" [disabled]="page >= totalPages - 1">Siguiente</button>
+</div>
